@@ -52,7 +52,7 @@ public class MainActivity extends Activity {
     public static final byte CONFIG1A_PRESET_MOTOR3 = 53;
     public static final byte CONFIG3_PRESET_MOTOR3  = 54;
     public static final byte ZERO_AND_SPAN_ALL      = 97;
-    public static final byte REZERO_ALL_LIFTERS     = 98;
+    public static final byte REZERO_ALL = 98;
     public static final byte NOMINATE_SIDE          = 99;
 
     // Commands that usually come from the Host Device
@@ -271,9 +271,15 @@ public class MainActivity extends Activity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch(item.getItemId()){
+
+            case R.id.action_zero_lifters:
+                rezeroAllLifters();
+                return true;
+
+            case R.id.action_zero_and_span:
+                zeroAndSpanAll();
+                return true;
         }
 
         return super.onOptionsItemSelected(item);
@@ -430,14 +436,14 @@ public class MainActivity extends Activity {
                     Log.d(TAG,"ZERO_AND_SPAN_ALL Message sent from Handler to Accessory");
                     break;
 
-                case REZERO_ALL_LIFTERS:
+                case REZERO_ALL:
                     if(accessoryManager.isConnected() == false) {
                         return;
                     }
-                    commandPacket[0] = REZERO_ALL_LIFTERS;
+                    commandPacket[0] = REZERO_ALL;
                     commandPacket[1] = 0;
                     accessoryManager.write(commandPacket);
-                    Log.d(TAG,"REZERO_ALL_LIFTERS Message sent from Handler to Accessory");
+                    Log.d(TAG,"REZERO_ALL Message sent from Handler to Accessory");
                     break;
 
 
@@ -780,6 +786,41 @@ public class MainActivity extends Activity {
         }
     }
 
+    private void rezeroAllLifters()
+    {
+        Message  message;
 
+        message = Message.obtain(handler, REZERO_ALL);
+
+        if(handler != null) {
+            handler.sendMessage(message);
+            Log.d(TAG, "REZERO_ALL message send to handler");
+        }
+    }
+
+    private void zeroAndSpanAll() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setMessage("After clicking OK, you will need to disconnect the USB cable and kill this app (back arrow is sufficient) then reconnect the USB cable after 2 minutes.")
+
+                .setTitle("Zero and Span")
+                .setPositiveButton("OK",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Message message = Message.obtain(handler, ZERO_AND_SPAN_ALL);
+                                if (handler != null) {
+                                    handler.sendMessage(message);
+                                    Log.d(TAG, "ZERO_AND_SPAN_ALL message send to handler");
+                                }
+                            }
+                        })
+                .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                })
+                .setCancelable(false);
+        builder.create().setCanceledOnTouchOutside(false);
+        builder.create().show();
+    }
 
 }
