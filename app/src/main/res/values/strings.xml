@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">BBQController</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="edit_height">50</string>
+    <string name="data_status">No training data detected yet</string>
+    <string name="start_wizard">QUICK START WIZARD</string>
+    <string name="zone_1_name">MOTOR1</string>
+    <string name="zone_2_name">MOTOR2</string>
+    <string name="zone_3_name">MOTOR3</string>
+</resources>

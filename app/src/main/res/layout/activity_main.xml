@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/page_background"
+
+
+    > <!-- BEWARE     android:fitsSystemWindow is not suitable prior to JellyBean API v15
+android:paddingTop="?android:attr/actionBarSize"
+     android:fitsSystemWindows="true"-->
+
+    <!-- Separates the two columns vertically from Training Data Status bar -->
+
+    <!-- Training data status bar -->
+
+    <LinearLayout
+        android:id="@+id/LinearLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/title_bar_background"
+        android:orientation="vertical"
+        >
+
+
+        <TextView
+            android:id="@+id/connection_status"
+            android:layout_width="fill_parent"
+            android:layout_height="20dip"
+            android:gravity="bottom|center"
+            android:text=""
+            android:textColor="@color/title_bar_text"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/data_present"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="20dp"
+            android:gravity="top|center"
+            android:text="MOTOR CONFIGURATION INTERFACE"
+            android:textColor="@color/title_bar_text"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <!-- Form two columns below the Training Data Status Bar -->
+
+
+    <!-- Manual Control Buttons Arranged - continuing vertically -->
+    <!--  CONTROL OF UNDER-HEAD ZONE -->
+    <TextView
+        android:id="@+id/text_zone1"
+        android:layout_width="50dip"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/text_target"
+        android:layout_below="@+id/LinearLayout1"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center_vertical|center"
+        android:text="@string/zone_1_name"
+        android:textColor="@color/secondary_heading_text"
+        android:textSize="12sp" />
+
+
+
+    <!-- Under-Head Up Button -->
+
+    <ImageButton
+
+        android:id="@+id/button_zone1_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/up_small"
+        android:onClick="onZone1Up"
+        android:layout_below="@+id/text_zone1"
+        android:layout_alignLeft="@+id/text_zone1"
+        android:background="@null"
+        android:layout_marginLeft = "10dp"
+        android:layout_marginTop = "5dp"
+        android:layout_marginBottom = "5dp"
+        />
+
+    <!-- Show the Target Position  -->
+    <EditText
+        android:id="@+id/edit_target_zone1"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_alignLeft="@+id/text_zone1"
+        android:layout_below="@+id/button_zone1_up"
+        android:editable="false"
+        android:focusable="false"
+        android:gravity="center_vertical|center_horizontal"
+        android:hint="@string/edit_height"
+        android:textColor="@color/button_text"
+        android:minHeight="40dp"
+        android:textSize="12sp" />
+
+    <!-- Under-Head Down Button -->
+    <ImageButton
+        android:id="@+id/button_zone1_down"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/down_small"
+        android:onClick="onZone1Down"
+        android:layout_alignLeft="@+id/text_zone1"
+        android:layout_below="@+id/edit_actual_zone1"
+        android:background="@null"
+        android:layout_marginLeft = "10dp"
+        android:layout_marginTop = "10dp"
+        android:layout_marginBottom = "10dp"
+        />
+
+    <!--  CONTROL OF THE UNDER-PELVIS ZONE -->
+    <TextView
+        android:id="@+id/text_zone2"
+        android:layout_width="50dip"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/text_zone3"
+        android:layout_alignTop="@+id/text_zone1"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="@string/zone_2_name"
+        android:textColor="@color/secondary_heading_text"
+        android:textSize="12sp" />
+
+    <!-- Under-Pelvis Up Button -->
+    <ImageButton
+        android:id="@+id/button_zone2_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/up_small"
+        android:onClick="onZone2Up"
+        android:layout_alignTop="@+id/button_zone1_up"
+        android:layout_alignLeft="@+id/text_zone2"
+        android:background="@null"
+        android:layout_marginLeft = "10dp"
+        android:layout_marginBottom = "10dp"
+        />
+
+    <EditText
+        android:id="@+id/edit_target_zone2"
+        android:layout_width="50dip"
+        android:layout_height="30dp"
+        android:layout_alignLeft="@+id/text_zone2"
+        android:layout_below="@+id/button_zone1_up"
+        android:editable="false"
+        android:focusable="false"
+        android:gravity="center_vertical|left"
+        android:hint="100"
+        android:textColor="@color/button_text"
+        android:minHeight="40dp"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/edit_pct_symbol"
+        android:layout_width="20dip"
+        android:layout_height="30dp"
+        android:layout_alignTop="@+id/edit_target_zone1"
+        android:layout_toRightOf="@+id/edit_target_zone2"
+        android:editable="false"
+        android:gravity="center_vertical|center"
+        android:minHeight="40dp"
+        android:text="%"
+        android:textColor="@color/button_text"
+        android:textSize="12sp" />
+
+    <!-- Under-Pelvis Down Button -->
+    <ImageButton
+        android:id="@+id/button_zone2_down"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/down_small"
+        android:onClick="onZone2Down"
+        android:layout_alignLeft="@+id/text_zone2"
+        android:layout_below="@+id/edit_actual_zone1"
+        android:background="@null"
+        android:layout_marginLeft = "10dp"
+        android:layout_marginTop = "10dp"
+        android:layout_marginBottom = "10dp"
+        />
+
+    <TextView
+        android:id="@+id/text_target"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft = "20dp"
+        android:layout_alignTop="@+id/edit_target_zone1"
+        android:gravity="center_vertical|left"
+        android:text="TARGET:"
+        android:textColor="@color/secondary_heading_text"
+        android:textSize="12sp" />
+
+
+    <!--  CONTROL OF UNDER-LEGS ZONE -->
+    <TextView
+        android:id="@+id/text_zone3"
+        android:layout_width="70dip"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/text_zone1"
+        android:layout_alignTop="@+id/text_zone1"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="@string/zone_3_name"
+        android:textColor="@color/secondary_heading_text"
+        android:textSize="12sp" />
+
+    <!-- Under-Legs Up Button -->
+    <ImageButton
+        android:id="@+id/button_zone3_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/up_small"
+        android:onClick="onZone3Up"
+        android:layout_alignTop="@+id/button_zone1_up"
+        android:layout_alignLeft="@+id/text_zone3"
+        android:background="@color/page_background"
+        android:layout_marginLeft = "20dp"
+        android:layout_marginBottom = "10dp" />
+
+    <!-- Show the Legs Target Position and % (units) symbol side by side -->
+    <EditText
+        android:id="@+id/edit_target_zone3"
+        android:layout_width="70dip"
+        android:layout_height="30dp"
+        android:layout_alignLeft="@+id/text_zone3"
+        android:layout_below="@+id/button_zone1_up"
+        android:editable="false"
+        android:focusable="false"
+        android:gravity="center_vertical|center_horizontal"
+        android:hint="100"
+        android:minHeight="40dp"
+        android:textColor="@color/button_text"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/edit_pct_symbol2"
+        android:layout_width="20dip"
+        android:layout_height="30dp"
+        android:layout_alignTop="@+id/edit_actual_zone1"
+        android:layout_toRightOf="@+id/edit_target_zone2"
+        android:editable="false"
+        android:gravity="center_vertical|center"
+        android:minHeight="40dp"
+        android:text="%"
+        android:textColor="@color/button_text"
+        android:textSize="12sp" />
+
+
+    <!-- End side-by-side - Target | % - continue down right hand column -->
+
+    <!-- Under-Legs Down Button -->
+    <ImageButton
+        android:id="@+id/button_zone3_down"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/down_small"
+        android:onClick="onZone3Down"
+        android:layout_alignLeft="@+id/text_zone3"
+        android:layout_below="@+id/edit_actual_zone1"
+        android:background="@null"
+        android:layout_marginLeft = "20dp"
+        android:layout_marginTop = "10dp"
+        android:layout_marginBottom = "10dp" />
+
+
+    <!-- Actuator Encoder Feedback - Current Position -->
+
+    <TextView
+        android:id="@+id/text_actual"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_alignRight="@+id/text_target"
+        android:layout_below="@+id/text_target"
+        android:editable="false"
+        android:gravity="center_vertical|left"
+        android:minHeight="40dp"
+        android:text="ACTUAL:"
+        android:textColor="@color/secondary_heading_text"
+        android:textSize="12sp" />
+
+    <EditText
+        android:id="@+id/edit_actual_zone1"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_alignLeft="@+id/text_zone1"
+        android:layout_below="@+id/edit_target_zone1"
+        android:gravity="center_vertical|center_horizontal"
+        android:hint="48"
+        android:textColor="@color/button_text"
+        android:editable="false"
+        android:focusable="false"
+        android:textSize="12sp" />
+
+    <EditText
+        android:id="@+id/edit_actual_zone2"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_alignLeft="@+id/text_zone2"
+        android:layout_below="@+id/edit_target_zone1"
+        android:hint="100"
+        android:textColor="@color/button_text"
+        android:editable="false"
+        android:focusable="false"
+        android:textSize="12sp" />
+
+    <EditText
+        android:id="@+id/edit_actual_zone3"
+        android:layout_width="70dp"
+        android:layout_height="30dp"
+        android:layout_alignLeft="@+id/text_zone3"
+        android:layout_below="@+id/edit_target_zone3"
+        android:gravity="center_vertical|center_horizontal"
+        android:hint="100"
+        android:textColor="@color/button_text"
+        android:editable="false"
+        android:focusable="false"
+        android:textSize="12sp" />
+
+
+
+    <Button
+        android:id="@+id/button_save_config_1"
+        android:layout_width="95dp"
+        android:layout_height="65dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/button_zone1_down"
+        android:layout_gravity="left"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
+        android:minHeight="20dp"
+        android:onClick="onSaveConfig1"
+        android:text="Save to Config 1"
+        android:textColor="@color/button_text"
+        android:textSize="14sp" />
+
+
+    <Button
+        android:id="@+id/button_save_config_1a"
+        android:layout_width="95dp"
+        android:layout_height="65dp"
+        android:layout_toRightOf="@+id/button_save_config_1"
+        android:layout_alignTop="@+id/button_save_config_1"
+        android:layout_gravity="left"
+        android:minHeight="20dp"
+        android:onClick="onSaveConfig1A"
+        android:text="Save to Config 1A"
+        android:textColor="@color/button_text"
+        android:textSize="14sp" />
+
+    <Button
+        android:id="@+id/button_roll_sausages"
+        android:layout_width="95dp"
+        android:layout_height="65dp"
+        android:layout_toRightOf="@+id/button_save_config_1a"
+        android:layout_alignTop="@+id/button_save_config_1a"
+        android:layout_gravity="left"
+        android:minHeight="20dp"
+        android:onClick="onStartRollingSausages"
+        android:text="Start Rolling Sausages"
+        android:textColor="@color/button_text"
+        android:textSize="14sp" />
+    <!-- End the Right Hand Column -->
+</RelativeLayout>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <color name="title_bar_background">#313131</color>      <!-- LIGHTER MEDIUM DARK GRAY -->
+    <!--color name="title_bar_background">#006400</color-->      <!-- Dark GREEN -->
+    <!--color name="title_bar_background">#008000</color-->      <!-- GREEN -->
+    <!--color name="title_bar_background">#00A86B</color-->   <!-- JADE -->
+    <!--color name="title_bar_background">#03C03C</color-->      <!-- DARK PASTEL GREEN -->
+    <color name="warning_text">#FF8C00</color>   <!-- ORANGE -->
+
+    <color name="title_bar_text">#DDDDDD</color>   <!-- LESS INTENSE WHITE -->
+    <!--color name="title_bar_text">#313131</color-->   <!-- LIGHTER MEDIUM DARK GRAY -->
+    <!-- color name="title_bar_text">#DDDDDD</color-->
+
+
+    <color name="page_background">#131313</color> <!-- MEDIUM DARK GRAY -->
+    <!-- color name="page_background">#313131</color LIGHTER MEDIUM DARK GRAY -->
+    <!--color name="page_background">#0B0B0B</color DARKEST GRAY-->
+    <color name="bold_text">#DDDDDD</color>
+    <!-- color name="page_text">#F5F5F5</color TOO BRIGHT PERHAPS -->
+    <color name="secondary_text">#DDDDDD</color>
+    <color name="secondary_heading_text">#B2BEB5</color>
+
+    <!--color name="button_text">#FF8C00</color-->
+    <color name="button_text">#A7FC00</color>       <!-- SPRING BUD (GREEN) -->
+    <!--color name="button_text">#7CFC00</color-->  <!-- FLUORO GREEN -->
+
+
+	<color name="sub_title">@null</color>
+	<color name="button_pressed">#770000</color>
+
+    <color name = "BLACK">#000000</color>    <!--BLACK -->
+
+</resources>
